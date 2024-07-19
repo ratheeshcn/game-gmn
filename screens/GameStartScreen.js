@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { TextInput, View, StyleSheet, Alert } from "react-native";
-import Colors from "../constants/colors";
-
+import { TextInput, View, StyleSheet, Alert, Text } from "react-native";
+import Title from "../components/Title";
+import Card from "../components/ui/Card";
 import PrimaryButton from "../components/ui/PrimaryButton";
+import Colors from "../constants/Colors";
 
 function GameStartScreen({ onNumberPicked }) {
   const [enteredNumber, setEnteredNumber] = useState("");
@@ -29,22 +30,26 @@ function GameStartScreen({ onNumberPicked }) {
   }
 
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.numberInput}
-        maxLength={2}
-        keyboardType="number-pad"
-        value={enteredNumber}
-        onChangeText={numberInputHandler}
-      />
-      <View style={styles.buttonsContainer}>
-        <View style={styles.buttonContainer}>
-          <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+    <View style={styles.rootContainer}>
+      <Title>Guess My Number</Title>
+      <Card>
+        <Text style={styles.instructionText}> Enter a Number </Text>
+        <TextInput
+          style={styles.numberInput}
+          maxLength={2}
+          keyboardType="number-pad"
+          value={enteredNumber}
+          onChangeText={numberInputHandler}
+        />
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+          </View>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
+          </View>
         </View>
-        <View style={styles.buttonContainer}>
-          <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
-        </View>
-      </View>
+      </Card>
     </View>
   );
 }
@@ -52,11 +57,16 @@ function GameStartScreen({ onNumberPicked }) {
 export default GameStartScreen;
 
 const styles = StyleSheet.create({
+  rootContainer: {
+    flex: 1,
+    marginTop: 100,
+    alignItems: "center",
+  },
   inputContainer: {
     justifyContent: "center",
     alignItems: "center",
     padding: 16,
-    marginTop: 100,
+    marginTop: 36,
     marginHorizontal: 24,
     borderRadius: 8,
     backgroundColor: Colors.primary800,
@@ -82,5 +92,9 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 1,
+  },
+  instructionText: {
+    color: Colors.primary500,
+    fontSize: 24,
   },
 });
