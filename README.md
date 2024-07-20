@@ -1,4 +1,4 @@
-##A simple game "Guess My Numebr App" 
+## A simple game "Guess My Numebr App" 
 
 Used RN
 - Custom Components
@@ -9,7 +9,7 @@ Used RN
 - images
 
 
-###screenshots 
+### screenshots 
 
 
 
