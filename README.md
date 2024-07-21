@@ -1,4 +1,4 @@
-## A simple game "Guess My Numebr App" 
+## A simple game "Guess My Numebr App" [As part of a course]
 
 Used RN
 - Custom Components
